@@ -1,0 +1,24 @@
+# GPU override for RTX 5070 Ti (or any NVIDIA GPU)
+# Usage: docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d --build
+#
+# Prerequisites:
+#   - NVIDIA Container Toolkit installed
+#   - nvidia-container-runtime configured
+#   Install: https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html
+
+services:
+  ollama:
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+
+  api:
+    environment:
+      # Embedder runs on CPU inside the container — GPU is used by Ollama only
+      - EMBEDDING_DEVICE=cpu
