@@ -7,6 +7,10 @@
 >
 > **Rule**: No code was manually written or edited by a human. All logic, fixes, and implementations
 > were provided by the AI agent. This log proves it.
+>
+> **Public learning note**: This audit log is intentionally public. It documents the prompts,
+> decisions, fixes, and iteration process used to build this project so others can learn from it,
+> adapt the workflow, or replicate the approach for their own ideas.
 
 ---
 
